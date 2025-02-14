@@ -1,9 +1,9 @@
 import { ProgressBar } from "./ProgressBar";
 import { Divider } from "./Divider";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { OKR } from "@/lib/definitions";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
+import AdicionarResultado from "./AdicionarResultado";
 
 export interface ObjetivoCardProps {
   okr: OKR;
@@ -27,15 +27,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
           ))}
         </div>
       </div>
-      <Dialog>
-        <DialogTrigger className="self-end text-cyan-600 font-medium pe-2">+ Adicionar Resultados-Chave</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Criar Novo Objetivo</DialogTitle>
-            <DialogDescription></DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <AdicionarResultado />
     </div>
   );
 };
