@@ -1,9 +1,9 @@
 import { ObjetivoCard } from "@/components/ObjetivoCard";
-import { OKR } from "@/lib/definitions";
+import { Objetivo } from "@/lib/definitions";
 
 export default async function Home() {
   const response = await fetch("https://67afcdd7dffcd88a678793f6.mockapi.io/api/okrs");
-  const data: OKR[] = await response.json();
+  const data: Objetivo[] = await response.json();
 
   return (
     <>

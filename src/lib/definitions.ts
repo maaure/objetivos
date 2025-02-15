@@ -11,7 +11,7 @@ export interface Results {
   okrId: number;
 }
 
-export interface OKR {
+export interface Objetivo {
   id: number;
   name: string;
   createdAt: Date;
