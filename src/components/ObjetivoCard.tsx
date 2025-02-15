@@ -19,6 +19,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
   const { name } = okr;
   const [resultKeys, setResultKeys] = useState<Results[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [reloadTrigger, setReloadTrigger] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,7 +33,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [okr]);
+  }, [okr, reloadTrigger]);
 
   return (
     <div className="flex flex-col w-full gap-2">
@@ -55,20 +56,18 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
               ))
             : resultKeys.map((resultKey, index) => (
                 <div key={resultKey.id}>
-                  <ResultadoSection resultado={resultKey} />
+                  <ResultadoSection resultado={resultKey} onEdit={() => setReloadTrigger((prev) => prev + 1)} />
                   {index < resultKeys.length - 1 && <Divider className="my-4" />}
                 </div>
               ))}
         </div>
       </div>
-      <OpenDialog
-        title="Criar Novo Resultado-Chave"
-        description="Preencha os campos abaixo para criar um novo resultado-chave"
-        label="+ Adicionar Resultado-Chave"
-        className="self-end text-cyan-700"
-      >
-        <ResultadoChaveForm okrId={okr.id} />
-      </OpenDialog>
+      <ResultadoChaveForm
+        okrId={okr.id}
+        onSuccess={() => setReloadTrigger((prev) => prev + 1)}
+        label="+ Adicionar Novo Resultado-Chave"
+        className="self-end text-cyan-800"
+      />
     </div>
   );
 };
