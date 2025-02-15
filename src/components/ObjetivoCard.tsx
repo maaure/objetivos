@@ -4,7 +4,7 @@ import { Divider } from "./ui/divider";
 import { Objetivo, Results } from "@/lib/definitions";
 import OpenDialog from "./OpenDialog";
 import { ProgressBar } from "./ProgressBar";
-import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
+import { ResultadoChaveFormDialog } from "./forms/ResultadoChaveFormDialog";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -62,7 +62,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
               ))}
         </div>
       </div>
-      <ResultadoChaveForm
+      <ResultadoChaveFormDialog
         okrId={okr.id}
         onSuccess={() => setReloadTrigger((prev) => prev + 1)}
         label="+ Adicionar Novo Resultado-Chave"

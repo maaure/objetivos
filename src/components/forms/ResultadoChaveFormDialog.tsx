@@ -44,7 +44,7 @@ interface ResultadoChaveFormProps {
   className: string;
 }
 
-export const ResultadoChaveForm = ({
+export const ResultadoChaveFormDialog = ({
   okrId: id,
   result,
   onSuccess,

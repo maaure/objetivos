@@ -1,6 +1,6 @@
 import { Pencil } from "lucide-react";
 import { ProgressBar } from "./ProgressBar";
-import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
+import { ResultadoChaveFormDialog } from "./forms/ResultadoChaveFormDialog";
 import { Results } from "@/lib/definitions";
 import { calculateProgress } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ const ResultadoSection = ({ resultado, onEdit }: ResultadoSectionProps) => {
         <div className="flex items-center gap-4">
           <ProgressBar progress={calculateProgress(deliveries)} />
 
-          <ResultadoChaveForm
+          <ResultadoChaveFormDialog
             icon={<Pencil height={"20px"} />}
             className="self-end text-cyan-800 w-12 h-10 rounded-md border flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200s"
             result={resultado}
