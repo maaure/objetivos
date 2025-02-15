@@ -15,5 +15,4 @@ export interface Objetivo {
   id: number;
   name: string;
   createdAt: Date;
-  resultKeys?: Results[];
 }

@@ -14,28 +14,22 @@ export async function getAllOKRs(): Promise<Objetivo[]> {
   return response.data;
 }
 
-export async function createOKR(
-  data: Pick<Objetivo, "name">
-): Promise<Objetivo> {
+export async function createOKR(data: Pick<Objetivo, "name">): Promise<Objetivo> {
   const response = await axiosInstance.post("okrs", data);
   return response.data;
 }
 
-export async function createResultsKey(
-  id: number,
-  data: Pick<Results, "name" | "deliveries">
-): Promise<Delivery> {
+export async function getResultsKeysByOKRId(id: number): Promise<Results[]> {
+  const response = await axiosInstance.get(`okrs/${id}/resultKeys`);
+  return response.data;
+}
+
+export async function createResultsKey(id: number, data: Pick<Results, "name" | "deliveries">): Promise<Delivery> {
   const response = await axiosInstance.post(`okrs/${id}/resultKeys`, data);
   return response.data;
 }
 
-export async function updateResultsKey(
-  result: Results,
-  data: Pick<Results, "name" | "deliveries">
-): Promise<Delivery> {
-  const response = await axiosInstance.post(
-    `okrs/${result.okrId}/resultKeys/${result.id}`,
-    data
-  );
+export async function updateResultsKey(result: Results, data: Pick<Results, "name" | "deliveries">): Promise<Delivery> {
+  const response = await axiosInstance.put(`okrs/${result.okrId}/resultKeys/${result.id}`, data);
   return response.data;
 }
