@@ -1,6 +1,6 @@
 import { Pencil } from "lucide-react";
-import { ProgressBar } from "./ProgressBar";
-import { ResultadoChaveFormDialog } from "./forms/ResultadoChaveFormDialog";
+import { ProgressBar } from "../ui/progress-bar";
+import { ResultadoChaveFormDialog } from "../forms/ResultadoChaveFormDialog";
 import { Results } from "@/lib/definitions";
 import { calculateProgress } from "@/lib/utils";
 

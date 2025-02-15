@@ -1,12 +1,7 @@
 "use client";
 
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTrigger,
-} from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../ui/dialog";
 import { Icon } from "lucide-react";
 import React from "react";
 
@@ -19,14 +14,7 @@ interface OpenDialogProps {
   className?: string;
 }
 
-const OpenDialog = ({
-  label,
-  icon,
-  title,
-  description,
-  children,
-  className,
-}: OpenDialogProps) => {
+const OpenDialog = ({ label, icon, title, description, children, className }: OpenDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger className={`flex gap-2 ${className}`}>
@@ -36,9 +24,7 @@ const OpenDialog = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">{title}</DialogTitle>
-          <DialogDescription className="hidden">
-            {description}
-          </DialogDescription>
+          <DialogDescription className="hidden">{description}</DialogDescription>
           {children}
         </DialogHeader>
       </DialogContent>

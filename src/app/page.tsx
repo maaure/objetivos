@@ -1,6 +1,6 @@
 import { NovoObjetivoForm } from "@/components/forms/NovoObjetivoForm";
-import { ObjetivoCard } from "@/components/ObjetivoCard";
-import OpenDialog from "@/components/OpenDialog";
+import { ObjetivoCard } from "@/components/painel/ObjetivoCard";
+import OpenDialog from "@/components/painel/OpenDialog";
 import { getAllOKRs } from "@/lib/api";
 import { Plus } from "lucide-react";
 

@@ -1,15 +1,15 @@
 "use client";
 
-import { Divider } from "./ui/divider";
+import { Divider } from "../ui/divider";
 import { Objetivo, Results } from "@/lib/definitions";
 import OpenDialog from "./OpenDialog";
-import { ProgressBar } from "./ProgressBar";
-import { ResultadoChaveFormDialog } from "./forms/ResultadoChaveFormDialog";
+import { ProgressBar } from "../ui/progress-bar";
+import { ResultadoChaveFormDialog } from "../forms/ResultadoChaveFormDialog";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { getResultsKeysByOKRId } from "@/lib/api";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "../ui/skeleton";
 
 export interface ObjetivoCardProps {
   okr: Objetivo;
