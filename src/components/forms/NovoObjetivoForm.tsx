@@ -4,11 +4,21 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 import { Button } from "../ui/button";
 
 const formSchema = yup.object({
-  objetivo: yup.string().required("O objetivo é obrigatório").max(100, "O objetivo não pode exceder 100 caracteres"),
+  objetivo: yup
+    .string()
+    .required("O objetivo é obrigatório")
+    .max(100, "O objetivo não pode exceder 100 caracteres"),
 });
 
 type FormValues = yup.InferType<typeof formSchema>;
@@ -38,14 +48,20 @@ export const NovoObjetivoForm = () => {
                 <Input
                   placeholder="Digite o objetivo"
                   {...field}
-                  className={form.formState.errors.objetivo ? "border-red-500" : ""}
+                  className={
+                    form.formState.errors.objetivo ? "border-red-500" : ""
+                  }
                 />
               </FormControl>
-              <FormMessage>{form.formState.errors.objetivo?.message}</FormMessage>
+              <FormMessage>
+                {form.formState.errors.objetivo?.message}
+              </FormMessage>
             </FormItem>
           )}
         />
-        <Button className="w-full bg-cyan-600 text-white">Salvar</Button>
+        <Button className="w-full bg-cyan-600 hover:bg-cyan-800 text-white">
+          Salvar
+        </Button>
       </form>
     </Form>
   );
