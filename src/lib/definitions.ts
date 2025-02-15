@@ -7,7 +7,7 @@ export interface Results {
   id: number;
   createdAt: Date;
   name: string;
-  deliveries: Delivery[];
+  deliveries?: Delivery[];
   okrId: number;
 }
 
@@ -15,5 +15,5 @@ export interface Objetivo {
   id: number;
   name: string;
   createdAt: Date;
-  resultKeys: Results[];
+  resultKeys?: Results[];
 }
