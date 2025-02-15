@@ -1,18 +1,17 @@
 import { FaPencilAlt } from "react-icons/fa";
 import { ProgressBar } from "./ProgressBar";
-import { Delivery } from "@/lib/definitions";
+import { Delivery, Results } from "@/lib/definitions";
 import { calculateProgress } from "@/lib/utils";
 import OpenDialog from "./OpenDialog";
-import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
 import { Pencil } from "lucide-react";
+import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
 
 interface ResultadoSectionProps {
-  id: number;
-  name: string;
-  deliveries: Delivery[];
+  resultado: Results;
 }
 
-const ResultadoSection = ({ id, name, deliveries }: ResultadoSectionProps) => {
+const ResultadoSection = ({ resultado }: ResultadoSectionProps) => {
+  const { id, name, deliveries } = resultado;
   return (
     <div key={id}>
       <div key={id} className="space-y-4">
@@ -25,7 +24,7 @@ const ResultadoSection = ({ id, name, deliveries }: ResultadoSectionProps) => {
             icon={<Pencil />}
             className="w-12 h-10 rounded-md border flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200s"
           >
-            <ResultadoChaveForm />
+            <ResultadoChaveForm data={resultado} />
           </OpenDialog>
         </div>
         {deliveries.length > 0 && (

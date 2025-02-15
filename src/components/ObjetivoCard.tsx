@@ -22,7 +22,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
         <div className="p-6">
           {okr.resultKeys.map((resultKey, index) => (
             <div key={resultKey.id}>
-              <ResultadoSection {...resultKey} />
+              <ResultadoSection resultado={resultKey} />
               {index < okr.resultKeys.length - 1 && (
                 <Divider className="my-4" />
               )}
