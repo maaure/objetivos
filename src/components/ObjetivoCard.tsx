@@ -4,7 +4,7 @@ import { Objetivo } from "@/lib/definitions";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
 import OpenDialog from "./OpenDialog";
-import { NovoObjetivoForm } from "./forms/NovoObjetivoForm";
+import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
 
 export interface ObjetivoCardProps {
   okr: Objetivo;
@@ -12,7 +12,7 @@ export interface ObjetivoCardProps {
 
 export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
   return (
-    <div className="flex flex-col w-full max-w-xl gap-2">
+    <div className="flex flex-col w-full gap-2">
       <div className="bg-white border border-1 border-gray-100 shadow-sm rounded-lg ">
         <div className="p-6">
           <h2 className="text-lg font-semibold mb-2">{okr.name}</h2>
@@ -23,18 +23,20 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
           {okr.resultKeys.map((resultKey, index) => (
             <div key={resultKey.id}>
               <ResultadoSection {...resultKey} />
-              {index < okr.resultKeys.length - 1 && <Divider className="my-4" />}
+              {index < okr.resultKeys.length - 1 && (
+                <Divider className="my-4" />
+              )}
             </div>
           ))}
         </div>
       </div>
       <OpenDialog
-        title="Criar Novo Objetivo"
-        description="Preencha os campos abaixo para criar um novo objetivo"
+        title="Criar Novo Resultado-Chave"
+        description="Preencha os campos abaixo para criar um novo resultado-chave"
         label="+ Adicionar Resultado-Chave"
         className="self-end text-cyan-700"
       >
-        <NovoObjetivoForm />
+        <ResultadoChaveForm />
       </OpenDialog>
     </div>
   );
