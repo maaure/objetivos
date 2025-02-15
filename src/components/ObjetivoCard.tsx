@@ -11,21 +11,21 @@ export interface ObjetivoCardProps {
 }
 
 export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
+  const { name, resultKeys } = okr;
+
   return (
     <div className="flex flex-col w-full gap-2">
       <div className="bg-white border border-1 border-gray-100 shadow-sm rounded-lg ">
         <div className="p-6">
-          <h2 className="text-lg font-semibold mb-2">{okr.name}</h2>
+          <h2 className="text-lg font-semibold mb-2">{name}</h2>
           <ProgressBar progress={calculateObjetivoProgress(okr)} />
         </div>
         <Divider> Resultados-Chave </Divider>
         <div className="p-6">
-          {okr.resultKeys.map((resultKey, index) => (
+          {resultKeys?.map((resultKey, index) => (
             <div key={resultKey.id}>
               <ResultadoSection resultado={resultKey} />
-              {index < okr.resultKeys.length - 1 && (
-                <Divider className="my-4" />
-              )}
+              {index < resultKeys.length - 1 && <Divider className="my-4" />}
             </div>
           ))}
         </div>
