@@ -1,17 +1,26 @@
+"use client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../ui/input";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "../ui/form";
 import { Button } from "../ui/button";
 
 const formSchema = yup.object({
-  resultado_chave: yup.string().required("O nome do resultado-chave é obrigatório"),
+  resultado_chave: yup
+    .string()
+    .required("O nome do resultado-chave é obrigatório"),
 });
 
 type FormValues = yup.InferType<typeof formSchema>;
 
-export const NovoObjetivoForm = () => {
+export const ResultadoChaveForm = () => {
   const form = useForm<FormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
@@ -35,10 +44,16 @@ export const NovoObjetivoForm = () => {
                 <Input
                   placeholder="Digite o Resultado-Chave"
                   {...field}
-                  className={form.formState.errors.resultado_chave ? "border-red-500" : ""}
+                  className={
+                    form.formState.errors.resultado_chave
+                      ? "border-red-500"
+                      : ""
+                  }
                 />
               </FormControl>
-              <FormMessage>{form.formState.errors.resultado_chave?.message}</FormMessage>
+              <FormMessage>
+                {form.formState.errors.resultado_chave?.message}
+              </FormMessage>
             </FormItem>
           )}
         />
