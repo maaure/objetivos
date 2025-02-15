@@ -1,10 +1,10 @@
-import { ProgressBar } from "./ProgressBar";
-import { Divider } from "./Divider";
+import { Divider } from "./ui/divider";
 import { Objetivo } from "@/lib/definitions";
+import OpenDialog from "./OpenDialog";
+import { ProgressBar } from "./ProgressBar";
+import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
-import OpenDialog from "./OpenDialog";
-import { ResultadoChaveForm } from "./forms/ResultadoChaveForm";
 
 export interface ObjetivoCardProps {
   okr: Objetivo;
@@ -36,7 +36,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
         label="+ Adicionar Resultado-Chave"
         className="self-end text-cyan-700"
       >
-        <ResultadoChaveForm />
+        <ResultadoChaveForm okrId={okr.id} />
       </OpenDialog>
     </div>
   );
