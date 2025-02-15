@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Button } from "../ui/button";
+import { createOKR } from "@/lib/api";
 
 const formSchema = yup.object({
   objetivo: yup
@@ -32,7 +33,10 @@ export const NovoObjetivoForm = () => {
   });
 
   function onSubmit(data: FormValues) {
-    console.log(data);
+    const req = {
+      name: data.objetivo,
+    };
+    createOKR(req);
   }
 
   return (

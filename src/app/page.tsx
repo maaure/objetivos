@@ -1,14 +1,11 @@
 import { NovoObjetivoForm } from "@/components/forms/NovoObjetivoForm";
 import { ObjetivoCard } from "@/components/ObjetivoCard";
 import OpenDialog from "@/components/OpenDialog";
-import { Objetivo } from "@/lib/definitions";
+import { getAllOKRs } from "@/lib/api";
 import { Plus } from "lucide-react";
 
 export default async function Home() {
-  const response = await fetch(
-    "https://67afcdd7dffcd88a678793f6.mockapi.io/api/okrs"
-  );
-  const data: Objetivo[] = await response.json();
+  const data = await getAllOKRs();
 
   return (
     <>
