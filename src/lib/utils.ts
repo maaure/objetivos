@@ -6,8 +6,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function calculateProgress(deliveries: Delivery[]) {
-  if (!deliveries.length) return 0;
+export function calculateProgress(deliveries?: Delivery[]) {
+  if (!deliveries || deliveries.length === 0) return 0;
   return Math.ceil(
     deliveries.reduce((sum, d) => sum + Number(d.value), 0) / deliveries.length
   );
