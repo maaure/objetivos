@@ -1,12 +1,13 @@
 import { ProgressBar } from "./ProgressBar";
 import { Divider } from "./Divider";
-import { OKR } from "@/lib/definitions";
+import { Objetivo } from "@/lib/definitions";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
-import AdicionarResultado from "./AdicionarResultado";
+import OpenDialog from "./OpenDialog";
+import { NovoObjetivoForm } from "./forms/NovoObjetivoForm";
 
 export interface ObjetivoCardProps {
-  okr: OKR;
+  okr: Objetivo;
 }
 
 export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
@@ -27,7 +28,14 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
           ))}
         </div>
       </div>
-      <AdicionarResultado />
+      <OpenDialog
+        title="Criar Novo Objetivo"
+        description="Preencha os campos abaixo para criar um novo objetivo"
+        label="+ Adicionar Resultado-Chave"
+        className="self-end text-cyan-700"
+      >
+        <NovoObjetivoForm />
+      </OpenDialog>
     </div>
   );
 };
