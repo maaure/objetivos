@@ -181,7 +181,9 @@ export const ResultadoChaveFormDialog = ({
                 </div>
               </div>
 
-              <Button className="w-full bg-cyan-600 text-white">Salvar</Button>
+              <Button className="w-full text-white transition-color bg-cyan-600 hover:bg-cyan-700 duration-150">
+                Salvar
+              </Button>
             </form>
           </Form>
         </DialogHeader>
