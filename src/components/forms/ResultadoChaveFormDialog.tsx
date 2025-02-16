@@ -75,10 +75,6 @@ export const ResultadoChaveFormDialog = ({
     formState: { errors },
   } = form;
 
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
-
   const { fields, append, remove } = useFieldArray({
     control: control,
     name: "deliveries",
