@@ -34,14 +34,15 @@ Este é o repositório do projeto desenvolvido para o teste técnico de **Pessoa
    yarn install
    ```
 
-3. **Configure a API**
+3. **Configuração do ambiente**
 
-   O projeto utiliza a API pública da MockAPI para gerenciar os dados de OKRs. Se necessário, clone a API ou crie a sua própria no [MockAPI.io](https://mockapi.io/).
+   Crie um arquivo `.env` na raiz do projeto e adicione a seguinte variável de ambiente:
 
-   Endpoints principais:
+   ```env
+   NEXT_PUBLIC_API_URL="https://67b107eb3fc4eef538e904b0.mockapi.io/api/"
+   ```
 
-   - `https://67b107eb3fc4eef538e904b0.mockapi.io/api/okrs`
-   - `https://67b107eb3fc4eef538e904b0.mockapi.io/api/okrs/${id}/resultKeys`
+   Caso utilize sua própria API, substitua o valor pela URL correspondente.
 
 4. **Rodando o projeto**
 
