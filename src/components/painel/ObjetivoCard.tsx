@@ -1,15 +1,13 @@
 "use client";
-
 import { Divider } from "../ui/divider";
 import { Objetivo, Results } from "@/lib/definitions";
-import OpenDialog from "./OpenDialog";
 import { ProgressBar } from "../ui/progress-bar";
 import { ResultadoChaveFormDialog } from "../forms/ResultadoChaveFormDialog";
 import ResultadoSection from "./ResultadoSection";
 import { calculateObjetivoProgress } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { getResultsKeysByOKRId } from "@/lib/api";
-import { Skeleton } from "../ui/skeleton";
+import SkeletonCard from "../ui/skeleton-card";
 
 export interface ObjetivoCardProps {
   okr: Objetivo;
@@ -44,22 +42,16 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
         </div>
         <Divider> Resultados-Chave </Divider>
         <div className="p-6">
-          {isLoading
-            ? [...Array(2)].map((_, index) => (
-                <div key={index}>
-                  <div className="space-y-2 mb-4">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-3 w-[200px]" />
-                  </div>
-                  {index < 1 && <Divider className="my-4" />}
-                </div>
-              ))
-            : resultKeys.map((resultKey, index) => (
-                <div key={resultKey.id}>
-                  <ResultadoSection resultado={resultKey} onEdit={() => setReloadTrigger((prev) => prev + 1)} />
-                  {index < resultKeys.length - 1 && <Divider className="my-4" />}
-                </div>
-              ))}
+          {isLoading ? (
+            <SkeletonCard />
+          ) : (
+            resultKeys.map((resultKey, index) => (
+              <div key={resultKey.id}>
+                <ResultadoSection resultado={resultKey} onEdit={() => setReloadTrigger((prev) => prev + 1)} />
+                {index < resultKeys.length - 1 && <Divider className="my-4" />}
+              </div>
+            ))
+          )}
         </div>
       </div>
       <ResultadoChaveFormDialog
