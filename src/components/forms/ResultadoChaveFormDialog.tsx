@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Icon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const formSchema = yup.object({
@@ -23,11 +23,12 @@ const formSchema = yup.object({
     .array()
     .of(
       yup.object().shape({
-        name: yup.string().required(),
+        name: yup.string().required("O nome da entrega é obrigatório"),
         value: yup
           .number()
-          .required()
-          .moreThan(0, "O valor deve ser maior que zero")
+          .required("O valor da entrega é obrigatório")
+          .positive("O valor deve ser positivo")
+          .lessThan(101, "O valor não deve ser maior que 100")
           .typeError("O valor deve ser um número"),
       })
     )
@@ -67,8 +68,19 @@ export const ResultadoChaveFormDialog = ({
     },
   });
 
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = form;
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
+
   const { fields, append, remove } = useFieldArray({
-    control: form.control,
+    control: control,
     name: "deliveries",
   });
 
@@ -85,7 +97,7 @@ export const ResultadoChaveFormDialog = ({
 
     return promise
       .then(() => {
-        form.reset();
+        reset();
         onSuccess?.();
         setOpen(false);
         toast.success("Resultado-Chave salvo com sucesso!");
@@ -109,9 +121,9 @@ export const ResultadoChaveFormDialog = ({
             Preencha os campos abaixo para criar ou alterar um Resultado-Chave
           </DialogDescription>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-4">
               <FormField
-                control={form.control}
+                control={control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
@@ -119,10 +131,10 @@ export const ResultadoChaveFormDialog = ({
                       <Input
                         placeholder="Digite o Resultado-Chave"
                         {...field}
-                        className={form.formState.errors.name ? "border-red-500" : ""}
+                        className={errors.name ? "border-red-500" : ""}
                       />
                     </FormControl>
-                    <FormMessage>{form.formState.errors.name?.message}</FormMessage>
+                    <FormMessage>{errors.name?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -132,7 +144,7 @@ export const ResultadoChaveFormDialog = ({
                   <div key={field.id} className="flex gap-4 items-end">
                     <div className="flex-1 grid grid-cols-2 gap-4">
                       <FormField
-                        control={form.control}
+                        control={control}
                         name={`deliveries.${index}.name`}
                         render={({ field }) => (
                           <FormItem>
@@ -140,15 +152,15 @@ export const ResultadoChaveFormDialog = ({
                               <Input
                                 placeholder="Digite a entrega"
                                 {...field}
-                                className={form.formState.errors.deliveries?.[index]?.name ? "border-red-500" : ""}
+                                className={errors.deliveries?.[index]?.name?.message ? "border-red-500" : ""}
                               />
                             </FormControl>
-                            <FormMessage>{form.formState.errors.deliveries?.[index]?.name?.message}</FormMessage>
+                            <FormMessage>{errors.deliveries?.[index]?.name?.message}</FormMessage>
                           </FormItem>
                         )}
                       />
                       <FormField
-                        control={form.control}
+                        control={control}
                         name={`deliveries.${index}.value`}
                         render={({ field }) => (
                           <FormItem>
@@ -157,10 +169,10 @@ export const ResultadoChaveFormDialog = ({
                                 placeholder="Valor (%)"
                                 type="number"
                                 {...field}
-                                className={form.formState.errors.deliveries?.[index]?.name ? "border-red-500" : ""}
+                                className={errors.deliveries?.[index]?.value?.message ? "border-red-500" : ""}
                               />
                             </FormControl>
-                            <FormMessage>{form.formState.errors.deliveries?.[index]?.value?.message}</FormMessage>
+                            <FormMessage>{errors.deliveries?.[index]?.value?.message}</FormMessage>
                           </FormItem>
                         )}
                       />
