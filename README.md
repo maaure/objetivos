@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sobre o projeto
 
-## Getting Started
+Este é o repositório do projeto desenvolvido para o teste técnico de **Pessoa Desenvolvedora Frontend** na TTZ. O projeto foi feito com **Next.js**, **React**, **TailwindCSS** e integra-se com a API MockAPI.io para gerenciar OKRs (Objectives and Key Results).
 
-First, run the development server:
+- **Live Demo**: [https://objetivos-theta.vercel.app/](https://objetivos-theta.vercel.app/)
+
+## Como rodar o projeto
+
+### Pré-requisitos
+
+- Node.js (recomendado versão 16 ou superior)
+- NPM ou Yarn
+
+### Passos para rodar
+
+1. **Clone este repositório**
+
+   ```bash
+   git clone https://github.com/maaure/objetivos
+   ```
+
+2. **Instale as dependências**
+
+   Navegue até o diretório do projeto e instale as dependências:
+
+   ```bash
+   cd objetivos
+   npm install
+   ```
+
+   ou, se estiver utilizando Yarn:
+
+   ```bash
+   yarn install
+   ```
+
+3. **Configure a API**
+
+   O projeto utiliza a API pública da MockAPI para gerenciar os dados de OKRs. Se necessário, clone a API ou crie a sua própria no [MockAPI.io](https://mockapi.io/).
+
+   Endpoints principais:
+
+   - `https://67b107eb3fc4eef538e904b0.mockapi.io/api/okrs`
+   - `https://67b107eb3fc4eef538e904b0.mockapi.io/api/okrs/${id}/resultKeys`
+
+4. **Rodando o projeto**
+
+   Para rodar o servidor de desenvolvimento, execute o seguinte comando:
+
+   ```bash
+   npm run dev
+   ```
+
+   ou
+
+   ```bash
+   yarn dev
+   ```
+
+   O projeto estará disponível em [http://localhost:3000](http://localhost:3000).
+
+### Funcionalidades
+
+- Cadastro e visualização de **Objetivos**.
+- Cadastro de **Resultados-chave** para cada Objetivo.
+- Cadastro de **Entregas** com percentual de conclusão.
+
+### Dependências
+
+- **React** e **Next.js** para o framework.
+- **TailwindCSS** para o estilo.
+- **Axios** para requisições HTTP.
+- **Shad/cn** para os componentes React.
+- **React Hook Form** para controle de formulários.
+
+### Testes
+
+O projeto foi configurado para utilizar o **Vitest** para testes. Para rodar os testes, use o comando:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ou
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Contato
 
-## Learn More
+Se tiver dúvidas, entre em contato comigo:
 
-To learn more about Next.js, take a look at the following resources:
+- **Email**: [pedromaure@gmail.com](mailto:pedromaure@gmail.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+NANDATÊ
