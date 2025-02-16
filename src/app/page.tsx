@@ -2,6 +2,8 @@ import { NovoObjetivoFormDialog } from "@/components/forms/NovoObjetivoFormDialo
 import { ObjetivoCard } from "@/components/painel/ObjetivoCard";
 import { getAllOKRs } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const data = await getAllOKRs();
 
