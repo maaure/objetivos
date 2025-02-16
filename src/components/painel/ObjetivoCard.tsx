@@ -38,7 +38,7 @@ export const ObjetivoCard = ({ okr }: ObjetivoCardProps) => {
       <div className="bg-white border border-1 border-gray-100 shadow-sm rounded-lg ">
         <div className="p-6">
           <h2 className="text-lg font-semibold mb-2">{name}</h2>
-          <ProgressBar progress={calculateObjetivoProgress(okr)} />
+          <ProgressBar progress={calculateObjetivoProgress(resultKeys)} />
         </div>
         <Divider> Resultados-Chave </Divider>
         <div className="p-6">
