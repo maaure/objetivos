@@ -1,8 +1,6 @@
 import { NovoObjetivoFormDialog } from "@/components/forms/NovoObjetivoFormDialog";
 import { ObjetivoCard } from "@/components/painel/ObjetivoCard";
-import OpenDialog from "@/components/painel/OpenDialog";
 import { getAllOKRs } from "@/lib/api";
-import { Plus } from "lucide-react";
 
 export default async function Home() {
   const data = await getAllOKRs();

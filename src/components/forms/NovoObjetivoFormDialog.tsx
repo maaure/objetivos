@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const formSchema = yup.object({
   objetivo: yup.string().required("O objetivo é obrigatório").max(100, "O objetivo não pode exceder 100 caracteres"),
@@ -37,9 +38,11 @@ export const NovoObjetivoFormDialog = () => {
         router.refresh();
         form.reset();
         setIsOpen(false);
+        toast.success("Objetivo criado com sucesso!");
       })
-      .catch(() => {})
-      .finally(() => {});
+      .catch(() => {
+        toast.error("Erro ao criar objetivo");
+      });
   }
 
   return (

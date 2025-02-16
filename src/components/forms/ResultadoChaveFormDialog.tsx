@@ -15,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Icon } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const formSchema = yup.object({
   name: yup.string().required("O nome do resultado-chave é obrigatório"),
@@ -87,9 +88,10 @@ export const ResultadoChaveFormDialog = ({
         form.reset();
         onSuccess?.();
         setOpen(false);
+        toast.success("Resultado-Chave salvo com sucesso!");
       })
-      .catch((error) => {
-        console.error("Erro ao salvar resultado-chave:", error);
+      .catch(() => {
+        toast.error("Erro ao salvar resultado-chave");
       });
   }
   return (
